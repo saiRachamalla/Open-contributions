@@ -1,286 +1,107 @@
-# Introduction to Markdown
 
-Markdown is a lightweight markup language with plain text formatting syntax. What this means to you is that by using just a few extra symbols in your text, Markdown helps you create a document with an explicit structure.
+# open-contributions
+**HERE,I want to share some basic things i have learned from DEVINCEPT modules**
+  
+## markdown
+**It may creates documents with an explicit structure**
 
-## Why Markdown
+_why markdown?_ 
+* Easy The syntax is very simple.
 
-* **Easy** The syntax is very simple.
+* Fast: It speeds up the workflows.
 
-* **Fast:**  It speeds up the workflows.
+* Clean: No missing closing tags, no improperly nested tags, no blocks left without containers.
 
-* **Clean:** No missing closing tags, no improperly nested tags, no blocks left without containers.
+* Portable: Cross-platform by nature.
 
-* **Portable:**  Cross-platform by nature.
-
-* **Flexible:** Output documents to a wide array of formats like, convert to HTML , rich text for sending emails or any number of other proprietary formats.
-
-
-> We will be using markdown in almost every module's assignment, so it is an important thing to learn here if you don't know already.
-
-## Basic working in Markdown
-
-### 1. Heading
-
-Use # for headings. You can use this like in HTML for H1, H2 etc.
-
-<ins>
-
-**Input:**
-
-</ins>
-
-```md
-
-# H1
-## H2
-### H3
-.
-.
-###### H6
-```
-
-**<ins>Output:</ins>**
-
-# H1
-## H2
-### H3
-.
-
-.
-###### H6
-
-<hr>
-
-### 2. Bold,Italics and striking words
-
-Use `**` for making text bold and `*` for italics.
-
-> You are required to close the tag here.
-
-**<ins>Input:</ins>**
-
-```md
-
-**Bold**
-*Italics*
-***Bold and Italics Both***
-~~this is the striking one~~
-```
-
-**<ins>Output:</ins>**
-
-**Bold**
-
-*Italics*
-
-***Bold and Italics Both***
-
-~~this is the striking one~~
-
-<hr>
+* Flexible: Output documents to a wide array of formats like, convert to HTML , rich text for sending emails or any number of other proprietary formats.
 
 
-### 3. Lists
+_so,Here u can get some basic idea about mardown_
+ _Go through the link to learn more_
+[introduction](https://github.com/DevIncept/Prerequisite-Module/blob/421d7b19bea94b7b9f2a52106be4f48809e25d00/Markdown.md).
+***
+# openCV
+ openCv(open source Computer Vision Library) is a library of programming functions mainly aimed at real time computer vision.
+### opencv's application areas include:
+* 2D and 3D feature toolkits.
+* Egomotion estimation.
+* Facial recognition system.
+* Gesture recognition.
+* Object detection.
+## numpy
+[numpy](https://github.com/saiRachamalla/OpenCV/blob/77b327ac9cdfe37cc67debb68dfa4bc272381794/Part1.md)
 
-Use `*` from new line for unordered list, `1.` for order.
+## computer vision
+[computer vision](https://github.com/DevIncept/OpenCV/blob/77b327ac9cdfe37cc67debb68dfa4bc272381794/part5.md)
 
->  You can also use these with proper indentation.
+[Basic operations with opencv](https://github.com/DevIncept/OpenCV/blob/77b327ac9cdfe37cc67debb68dfa4bc272381794/part7.md)
+## segmentation
+ **Image segmentation** is typically used to locate objects and boundaries (lines, curves, etc.) in images. More precisely, image segmentation is the process of assigning a label to every pixel in an image such that pixels with the same label share certain characteristics.
 
-**<ins>Input:</ins>**
+practical applications of segmentation:
 
-```md
+* object detection 
 
-* Unordered
+* medical imaging 
 
-1. Ordered
+* Recognition tasks 
+* Traffic control systems 
+# contours
+Contours are mainly used in Object Detection. Working with contours is very handy and have application in determining the size and shape of an object. Briefly stating, Contour finds its applications in anything that involves shape analysis, object detection and recognition.
 
-* Nested
-   1. ordered inside.
-      * Unordered inside
+# Object detection
+OpenCV is the huge open-source library for computer vision, machine learning, and image processing and now it plays a major role in real-time operation which is very important in today’s systems. By using it, one can process images and videos to identify objects, faces, or even the handwriting of a human. This article focuses on detecting objects.
+### Object Detection
+Object Detection is a computer technology related to computer vision, image processing, and deep learning that deals with detecting instances of objects in images and videos. We will do object detection in this article using something known as haar cascades.
+### Haar Cascades
+Haar Cascade classifiers are an effective way for object detection. Haar Cascade is a machine learning-based approach where a lot of positive and negative images are used to train the classifier.
 
-```
+**Positive images** – These images contain the images which we want our classifier to identify.
 
-**<ins>Output:</ins>**
+**Negative Images**– Images of everything else, which do not contain the object we want to detect.
 
+_EXAMPPE:_
 
-* Unordered
+![input image](https://media.geeksforgeeks.org/wp-content/uploads/20200122210935/image28.jpg)
+`
+import cv2
+from matplotlib import pyplot as plt
+  
+##### Opening image
+img = cv2.imread("image.jpg")
+  
+###### OpenCV opens images as BRG but we want it as RGB and we also need a grayscale version
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+  
+###### Creates the environment of the picture and shows it
+plt.subplot(1, 1, 1)
+plt.imshow(img_rgb)
+plt.show()
+`
+##### Recognition
 
-1. Ordered
+We will use the detectMultiScale() function of OpenCV to recognize big signs as well as small ones:
+`
+###### Use minSize because for not bothering with extra-small dots that would look like STOP signs
 
-* Nested
-   1. ordered inside.
-      * Unordered inside
+found = stop_data.detectMultiScale(img_gray, 
+                                   minSize =(20, 20))
+  
+###### Don't do anything if there's no sign
+amount_found = len(found)
+  
+  
+if amount_found != 0:
       
-
-
-<hr>
-
-### 4. Hyperlinks and images
-
-Use `[text](url)` for hyperlinks and, `![text](path/url)` for image.
-
->  You can also use image links by nesting these both.
-
-**<ins>Input:</ins>**
-
-```md
-
-[Devincept Website](https://devincept.tech/)
-
-![DevIncept logo image](extras/logo.gif)
-
-[![DevIncept logo image link](extras/logo.gif)](https://devincept.tech/)
-
-```
-
-**<ins>Output:</ins>**
-
-[Devincept Website](https://devincept.tech/)
-
-![DevIncept logo image](extras/logo.gif)
-
-[![DevIncept logo image link](extras/logo.gif)](https://devincept.tech/)
-
-   
-
-<hr>
-
-### 5. Coding and notes
-
-* Use ` for liner codes or highlight.
-* Use ``` for multiline code.
-* Use > to give a note.
-
->  You can also use language of code to make the multiline code more realistic, exp: ```python
-
-**<ins>Input:</ins>**
-
-```md
-    `simple code or highlight`
-
-    > Give a note like this
-
-    ```python
-    #simple python multiline code
-    a=input()
-    c=a
-    print (c)
-    ```
-```
-
-
-
-**<ins>Output:</ins>**
-
-`simple code or highlight`
-
-
-> Give a note like this
-
-
-```python
-#simple python multiline code
-a=input()
-c=a
-print (c)
-```
-
-
-<hr>
-
-### 6. Table
-
-Till now we got to know some important  
-
-
-**<ins>Input:</ins>**
-
-```md
-
-|Heading 1|Heading 2| Heading 3|
-|---------|---------|----------|
-|  Data   |  Data   |  Data    |
-|  Data   |  Data   |   Data   |
-
-```
-
-**<ins>Output:</ins>**
-
-|Heading 1|Heading 2| Heading 3|
-|---------|---------|----------|
-|  Data   |  Data   |  Data    |
-|  Data   |  Data   |   Data   |
- 
-<hr> 
- 
-### 7. The power of HTML
-
-We have seen the basic features of markdown till now, but superpower of markdown is, You can directly use HTML in it.
-
-> Some times it becomes a little difficult to do some complex things in markdown, so using HTML that time can make it work.
-
-**<ins>Input:</ins>**
-
-
-```md
-Lists or table inside the table can be implemented using HTML
-
-|Heading 1|Heading 2| Heading 3                                                                  |
-|---------|---------|----------------------------------------------------------------------------|
-|  Data   |  Data   |  Data<ul><li>Data part 1 </li><li>Data part 2</li></ul>                    |
-|  Data   |  Data   |   <table> <th>h1</th><th>h2</th><tr><td>d1</td><td>d2</td></tr></table>    |
-
-```
-
-**<ins>Output:</ins>**
-
-|Heading 1|Heading 2| Heading 3|
-|---------|---------|----------|
-|  Data   |  Data   |  Data<ul><li>Data part 1 </li><li>Data part 2</li></ul>    |
-|  Data   |  Data   |   <table> <th>h1</th><th>h2</th><tr><td>d1</td><td>d2</td></tr></table>    |
-      
-
-<hr> 
- 
-### 7. Emojis to make it  :heart:
-
-Use emojis in your repository's Readme to make it Awesome :exclamation::exclamation::exclamation:
-
-**<ins>Input:</ins>**
-
-
-```md
-Use anywhere just like 
-
-:bowtie:
-
-:smile:
-
-:heart:
-
-```
-
-**<ins>Output:</ins>**
-
-:bowtie:
-
-:smile:
-
-:heart:
-
-> To get the complete list of github markdown emoji markup [click here](https://gist.github.com/rxaviers/7360908)     
-
-<hr>
-
-&nbsp;
-
-These were the most used Markdown features. These will help you for you assignment in this module as well as in further program, and without markdown your repository on github is just a code-file, start using it now :wink: 
-
-&nbsp;
-
-&nbsp;
-
-
-
-Thanks for Reading!!!
-
+    ##### There may be more than one sign in the image
+    for (x, y, width, height) in found:
+          
+        ##### We draw a green rectangle around every recognized sign
+        cv2.rectangle(img_rgb, (x, y), 
+                      (x + height, y + width), 
+                      (0, 255, 0), 5)
+`
+###### output:
+![object detection](https://media.geeksforgeeks.org/wp-content/uploads/20200122210826/stop_recognition_output.png)
